@@ -16,22 +16,37 @@ class Calculation(expression: Expression) {
 
     init {
         when (operator) {
-            "+" -> addition()
-            "-" -> subtraction()
-            "*" -> multiplication()
-            "/" -> division()
+            "+" -> Addition(x,y)
+            "-" -> Subtraction(x,y)
+            "*" -> Multiplication(x,y)
+            "/" -> Division(x,y)
             else -> println("wrong operator")
         }
     }
 
-    fun addition() { println(x + y) }
+    class Addition(_x: Double, _y: Double){
+        private val x =_x
+        private val y =_y
+        init { println(x + y) }
+    }
 
-    fun subtraction() { println(x - y) }
+    class Subtraction(_x: Double, _y: Double){
+        private val x =_x
+        private val y =_y
+        init { println(x - y) }
+    }
 
-    fun multiplication() { println(x * y) }
+    class Multiplication(_x: Double, _y: Double){
+        private val x =_x
+        private val y =_y
+        init { println(x * y) }
+    }
 
-    fun division() { println(x / y) }
-
+    class Division(_x: Double, _y: Double){
+        private val x =_x
+        private val y =_y
+        init { println(x / y) }
+    }
 }
 
 class Expression(_x: Double, _y: Double, _operator: String) {
