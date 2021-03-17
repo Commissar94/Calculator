@@ -3,38 +3,42 @@ import java.util.*
 fun main() {
 
     val scanner = Scanner(System.`in`)
-    val x = scanner.nextDouble()
-    val y = scanner.nextDouble()
 
-    when (val operator = scanner.next()) {
-        "+" -> Calculation(x, y, operator).addition()
-        "-" -> Calculation(x, y, operator).subtraction()
-        "*" -> Calculation(x, y, operator).multiplication()
-        "/" -> Calculation(x, y, operator).division()
-        else -> println("wrong operator")
-    }
+    val expression = Expression(scanner.nextDouble(), scanner.nextDouble(), scanner.next())
+    Calculation(expression)
 }
 
-class Calculation(_x: Double, _y: Double, _operator: String) {
+class Calculation(expression: Expression) {
 
-    private val x = _x
-    private val y = _y
-    val operation = _operator
+    private val x = expression.x
+    private val y = expression.y
+    private val operator = expression.operator
 
-    fun addition() {
-        println(x + y)
+    init {
+        when (operator) {
+            "+" -> addition()
+            "-" -> subtraction()
+            "*" -> multiplication()
+            "/" -> division()
+            else -> println("wrong operator")
+        }
     }
 
-    fun subtraction() {
-        println(x - y)
-    }
+    fun addition() { println(x + y) }
 
-    fun multiplication() {
-        println(x * y)
-    }
+    fun subtraction() { println(x - y) }
 
-    fun division() {
-        println(x / y)
-    }
+    fun multiplication() { println(x * y) }
+
+    fun division() { println(x / y) }
 
 }
+
+class Expression(_x: Double, _y: Double, _operator: String) {
+
+    val x = _x
+    val y = _y
+    val operator = _operator
+
+}
+
